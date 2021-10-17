@@ -7,7 +7,7 @@ namespace Algorithmic.Array.Sort
     {
         IList<T> ISorter.Sort<T>(IList<T> collection)
         {
-            return SortAlgorithm(collection, (p, c) => p.CompareTo(c) < 0) ;
+            return SortAlgorithm(collection, (p, c) => p.CompareTo(c) < 0);
         }
 
         IList<T> ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
