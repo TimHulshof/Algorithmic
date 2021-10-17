@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Algorithmic.Array
+namespace Algorithmic.Array.Sort
 {
     internal interface ISorter
     {
