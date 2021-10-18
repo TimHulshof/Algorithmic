@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    internal interface ISorter
+    public interface ISorter
     {
         internal IList<T> Sort<T>(IList<T> collection) where T : IComparable<T>;
         internal IList<T> Sort<T>(IList<T> collection, IComparer<T>? comparer);
