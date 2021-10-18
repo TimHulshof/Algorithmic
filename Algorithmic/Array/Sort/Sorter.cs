@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    internal abstract class SorterBase : ISorter
+    internal abstract class Sorter : ISorter
     {
         IList<T> ISorter.Sort<T>(IList<T> collection)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    class BubbleSort : SorterBase
+    class BubbleSort : Sorter
     {
         private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
