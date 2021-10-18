@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
     class BubbleSort : SorterBase
     {
-        private protected override IList<T> SortAlgorithm<T>(IList<T> collection, ISorter.ElementComparer<T> comparer)
+        private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
             if (collection.Count <= 1)
             {
@@ -19,7 +20,7 @@ namespace Algorithmic.Array.Sort
                 {
                     var left = i;
                     var right = i + 1;
-                    if (comparer(collection[right], collection[left]))
+                    if (comparison.Invoke(collection[left], collection[right]) > 0)
                     {
                         noSwap = false;
                         // Swap

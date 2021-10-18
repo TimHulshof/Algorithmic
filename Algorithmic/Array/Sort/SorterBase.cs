@@ -7,24 +7,19 @@ namespace Algorithmic.Array.Sort
     {
         IList<T> ISorter.Sort<T>(IList<T> collection)
         {
-            return SortAlgorithm(collection, (p, c) => p.CompareTo(c) < 0);
-        }
-
-        IList<T> ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
-        {
-            return SortAlgorithm(collection, (p, c) => comparison.Invoke(p, c) < 0);
+            return SortAlgorithm(collection, (p, c) => p.CompareTo(c));
         }
 
         IList<T> ISorter.Sort<T>(IList<T> collection, IComparer<T> comparer)
         {
-            return SortAlgorithm(collection, (p, c) => comparer.Compare(p, c) < 0);
+            return SortAlgorithm(collection, (p, c) => comparer.Compare(p, c));
         }
 
-        IList<T> ISorter.Sort<T>(IList<T> collection, ISorter.ElementComparer<T> comparer)
+        IList<T> ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
         {
-            return SortAlgorithm(collection, comparer);
+            return SortAlgorithm(collection, (p, c) => comparison.Invoke(p, c));
         }
 
-        private protected abstract IList<T> SortAlgorithm<T>(IList<T> collection, ISorter.ElementComparer<T> comparer);
+        private protected abstract IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison);
     }
 }
