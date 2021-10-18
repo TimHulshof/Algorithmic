@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Array\Sort\" />
+    <ProjectReference Include="..\Algorithmic\Algorithmic.csproj" />
   </ItemGroup>
 
 </Project>

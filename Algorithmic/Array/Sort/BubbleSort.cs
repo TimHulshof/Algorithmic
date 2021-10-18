@@ -7,11 +7,6 @@ namespace Algorithmic.Array.Sort
     {
         private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
-            if (collection.Count <= 1)
-            {
-                return collection;
-            }
-
             var maxIndex = collection.Count - 1;
             while (maxIndex != 1)
             {
