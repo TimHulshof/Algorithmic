@@ -8,6 +8,7 @@ namespace Algorithmic.Array.Sort
     [TestClass]
     public class SorterTest
     {
+        // Concrete Sorters to be tested.
         public static IEnumerable<object[]> Sorters
         {
             get
