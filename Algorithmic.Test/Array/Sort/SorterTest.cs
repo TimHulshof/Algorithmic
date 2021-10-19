@@ -115,6 +115,33 @@ namespace Algorithmic.Array.Sort
             yield return new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
             yield return new int[] { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 };
             yield return new int[] { 12, 6, 3, 13, 65, 1, 78, 1, 31, 21, -1, -5, 213, -7134, 134 };
+            yield return GetRandomIntArray(100, int.MaxValue);
+            yield return GetRandomIntArray(100, int.MaxValue - 1);
+            yield return GetRandomIntArray(100, int.MinValue);
+            yield return GetRandomIntArray(100, int.MinValue + 1);
+            yield return GetRandomIntArray(100);
+            yield return GetRandomIntArray(100);
+            yield return GetRandomIntArray(100);
+            yield return GetRandomIntArray(100);
+            yield return GetRandomIntArray(100);
+            yield return GetRandomIntArray(100);
+        }
+
+        private int[] GetRandomIntArray(int size, int? sampleInt = null)
+        {
+            var array = new int[size];
+            var random = new Random();
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = random.Next();
+            }
+
+            if (sampleInt is not null)
+            {
+                var index = random.Next(0, size);
+                array[index] = (int)sampleInt;
+            }
+            return array;
         }
     }
 }
