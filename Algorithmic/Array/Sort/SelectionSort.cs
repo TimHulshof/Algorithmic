@@ -5,7 +5,7 @@ namespace Algorithmic.Array.Sort
 {
     internal class SelectionSort : Sorter
     {
-        private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
+        private protected override void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
             var collectionCount = collection.Count;
 
@@ -28,8 +28,6 @@ namespace Algorithmic.Array.Sort
                     collection[minIndex] = temp;
                 }
             }
-
-            return collection;
         }
     }
 }

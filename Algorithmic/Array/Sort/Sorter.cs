@@ -5,22 +5,22 @@ namespace Algorithmic.Array.Sort
 {
     internal abstract class Sorter : ISorter
     {
-        IList<T> ISorter.Sort<T>(IList<T> collection)
+        void ISorter.Sort<T>(IList<T> collection)
         {
-            return CheckCollection(collection, (p, c) => p.CompareTo(c));
+            CheckCollection(collection, (p, c) => p.CompareTo(c));
         }
 
-        IList<T> ISorter.Sort<T>(IList<T> collection, IComparer<T> comparer)
+        void ISorter.Sort<T>(IList<T> collection, IComparer<T> comparer)
         {
-            return CheckCollection(collection, (p, c) => comparer.Compare(p, c));
+            CheckCollection(collection, (p, c) => comparer.Compare(p, c));
         }
 
-        IList<T> ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
+        void ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
         {
-            return CheckCollection(collection, comparison);
+            CheckCollection(collection, comparison);
         }
 
-        private IList<T> CheckCollection<T>(IList<T> collection, Comparison<T> comparison)
+        private void CheckCollection<T>(IList<T> collection, Comparison<T> comparison)
         {
             if (collection is null)
             {
@@ -30,12 +30,12 @@ namespace Algorithmic.Array.Sort
             // Collection is already sorted (less then two elements).
             if (collection.Count <= 1)
             {
-                return collection;
+                return;
             }
 
-            return SortAlgorithm(collection, comparison);
+            SortAlgorithm(collection, comparison);
         }
 
-        private protected abstract IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison);
+        private protected abstract void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison);
     }
 }

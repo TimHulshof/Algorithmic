@@ -5,7 +5,7 @@ namespace Algorithmic.Array.Sort
 {
     class BubbleSort : Sorter
     {
-        private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
+        private protected override void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
             var maxIndex = collection.Count - 1;
             while (maxIndex != 0)
@@ -32,8 +32,6 @@ namespace Algorithmic.Array.Sort
 
                 maxIndex--;
             }
-
-            return collection;
         }
     }
 }
