@@ -58,10 +58,10 @@ namespace Algorithmic.Array.Sort
         {
             foreach (var testArray in GetTestArrays())
             {
-                var foo = sorter.Sort(testArray);
-                for (int i = 1; i < foo.Count; i++)
+                sorter.Sort(testArray);
+                for (int i = 1; i < testArray.Length; i++)
                 {
-                    Assert.IsTrue(foo[i] >= (foo[i - 1]));
+                    Assert.IsTrue(testArray[i] >= (testArray[i - 1]));
                 }
             }
         }
