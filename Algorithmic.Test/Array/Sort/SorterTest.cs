@@ -86,7 +86,24 @@ namespace Algorithmic.Array.Sort
         {
             foreach (var testArray in GetTestArrays())
             {
-                sorter.Sort(testArray, (p, c) => c - p);
+                Comparison<int> comparison = (p, c) =>
+                {
+                    if (p > c)
+                    {
+                        return -1;
+                    }
+                    if (p < c)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                };
+
+                sorter.Sort(testArray, comparison);
+
                 for (int i = 1; i < testArray.Length; i++)
                 {
                     Assert.IsTrue(testArray[i] <= (testArray[i - 1]));
@@ -127,7 +144,7 @@ namespace Algorithmic.Array.Sort
             yield return GetRandomIntArray(100);
         }
 
-        private int[] GetRandomIntArray(int size, int? sampleInt = null)
+        private int[] GetRandomIntArray(int size, int? injectedValue = null)
         {
             var array = new int[size];
             var random = new Random();
@@ -136,10 +153,10 @@ namespace Algorithmic.Array.Sort
                 array[i] = random.Next();
             }
 
-            if (sampleInt is not null)
+            if (injectedValue is not null)
             {
                 var index = random.Next(0, size);
-                array[index] = (int)sampleInt;
+                array[index] = (int)injectedValue;
             }
             return array;
         }
