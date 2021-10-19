@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    class BubbleSort : Sorter
+    internal class BubbleSort : Sorter
     {
         public override string Name => "Bubble Sort";
         public override string Description => GetDescription();

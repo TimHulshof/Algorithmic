@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    internal abstract class Sorter : ISorter
+    public abstract class Sorter : ISorter
     {
         public AlgorithmType AlgorithmType => AlgorithmType.Sorting;
         public abstract string Name { get; }
@@ -18,17 +18,17 @@ namespace Algorithmic.Array.Sort
         public abstract bool isSerial { get; }
         public abstract bool isAdaptive { get; }
 
-        void ISorter.Sort<T>(IList<T> collection)
+        public void Sort<T>(IList<T> collection) where T : IComparable<T>
         {
             CheckCollection(collection, (p, c) => p.CompareTo(c));
         }
 
-        void ISorter.Sort<T>(IList<T> collection, IComparer<T> comparer)
+        public void Sort<T>(IList<T> collection, IComparer<T> comparer)
         {
             CheckCollection(collection, (p, c) => comparer.Compare(p, c));
         }
 
-        void ISorter.Sort<T>(IList<T> collection, Comparison<T> comparison)
+        public void Sort<T>(IList<T> collection, Comparison<T> comparison)
         {
             CheckCollection(collection, comparison);
         }

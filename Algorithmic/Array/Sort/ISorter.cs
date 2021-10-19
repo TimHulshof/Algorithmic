@@ -11,8 +11,8 @@ namespace Algorithmic.Array.Sort
         public bool isSerial { get; }
         public bool isAdaptive { get; }
 
-        internal void Sort<T>(IList<T> collection) where T : IComparable<T>;
-        internal void Sort<T>(IList<T> collection, IComparer<T>? comparer);
-        internal void Sort<T>(IList<T> collection, Comparison<T> comparison);
+        public void Sort<T>(IList<T> collection) where T : IComparable<T>;
+        public void Sort<T>(IList<T> collection, IComparer<T>? comparer);
+        public void Sort<T>(IList<T> collection, Comparison<T> comparison);
     }
 }
