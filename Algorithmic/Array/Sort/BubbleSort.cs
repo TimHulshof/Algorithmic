@@ -8,7 +8,7 @@ namespace Algorithmic.Array.Sort
         private protected override IList<T> SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
             var maxIndex = collection.Count - 1;
-            while (maxIndex != 1)
+            while (maxIndex != 0)
             {
                 bool noSwap = true;
                 for (int i = 0; i < maxIndex; i++)
