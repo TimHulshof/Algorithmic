@@ -1,10 +1,28 @@
-﻿using System;
+﻿using Algorithmic.Analysis;
+using System;
 using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
     class BubbleSort : Sorter
     {
+        public override string Name => "Bubble Sort";
+        public override string Description => GetDescription();
+        public override Complexity MemoryUsage => throw new NotImplementedException();
+        public override Complexity BestComplexity => throw new NotImplementedException();
+        public override Complexity AverageComplexity => throw new NotImplementedException();
+        public override Complexity WorstComplexity => throw new NotImplementedException();
+        public override bool isRecursive => false;
+        public override bool isStable => true;
+        public override bool isSerial => true;
+        public override bool isAdaptive => false;
+
+        private string GetDescription()
+        {
+            return "Sort array by stepping through elements and swap when adjacent elements are in the wrong order. " +
+                "Pass through the array multiple times until all of the elements are in the correct order.";
+        }
+
         private protected override void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
         {
             var maxIndex = collection.Count - 1;
