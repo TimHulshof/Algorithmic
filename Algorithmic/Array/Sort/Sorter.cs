@@ -6,6 +6,7 @@ namespace Algorithmic.Array.Sort
 {
     internal abstract class Sorter : ISorter
     {
+        public AlgorithmType AlgorithmType => AlgorithmType.Sorting;
         public abstract string Name { get; }
         public abstract string Description { get; }
         public abstract Complexity MemoryUsage { get; }
