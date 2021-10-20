@@ -13,7 +13,7 @@ namespace Algorithmic.Array.Sort
         public override Complexity WorstComplexity => throw new NotImplementedException();
         public override bool isRecursive => true;
         public override bool isStable => false;
-        public override bool isSerial => false;
+        public override bool isSerial => true;
         public override bool isAdaptive => false;
 
         private protected override string GetDescription()
