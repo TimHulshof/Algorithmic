@@ -7,7 +7,6 @@ namespace Algorithmic.Array.Sort
     internal class BubbleSort : Sorter
     {
         public override string Name => "Bubble Sort";
-        public override string Description => GetDescription();
         public override Complexity MemoryUsage => throw new NotImplementedException();
         public override Complexity BestComplexity => throw new NotImplementedException();
         public override Complexity AverageComplexity => throw new NotImplementedException();
@@ -17,9 +16,10 @@ namespace Algorithmic.Array.Sort
         public override bool isSerial => true;
         public override bool isAdaptive => false;
 
-        private string GetDescription()
+        private protected override string GetDescription()
         {
-            return "Sort array by stepping through elements and swap when adjacent elements are in the wrong order. " +
+            return
+                "Sort array by stepping through elements and swap when adjacent elements are in the wrong order. " +
                 "Pass through the array multiple times until all of the elements are in the correct order.";
         }
 

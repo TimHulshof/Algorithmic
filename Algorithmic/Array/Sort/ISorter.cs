@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Algorithmic.Array.Sort
 {
-    public interface ISorter : IDescriptive, ITimeComplexity, IMemoryComplexity
+    public interface ISorter : IAlgorithm, ITimeComplexity, IMemoryComplexity
     {
         public bool isRecursive { get; }
         public bool isStable { get; }

@@ -7,7 +7,6 @@ namespace Algorithmic.Array.Sort
     internal class LomutoQuickSort : Sorter
     {
         public override string Name => "Quick Sort - Lomuto Partition Scheme";
-        public override string Description => GetDesription();
         public override Complexity MemoryUsage => throw new NotImplementedException();
         public override Complexity BestComplexity => throw new NotImplementedException();
         public override Complexity AverageComplexity => throw new NotImplementedException();
@@ -17,7 +16,7 @@ namespace Algorithmic.Array.Sort
         public override bool isSerial => false;
         public override bool isAdaptive => false;
 
-        private string GetDesription()
+        private protected override string GetDescription()
         {
             return
                 "Quicksort scheme developed by Nico Lomuto. Chose the last element as a pivot value to partition the array arount this value. " +

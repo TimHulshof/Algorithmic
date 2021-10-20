@@ -7,7 +7,6 @@ namespace Algorithmic.Array.Sort
     internal class SelectionSort : Sorter
     {
         public override string Name => "Selection Sort";
-        public override string Description => GetDescription();
         public override Complexity MemoryUsage => throw new NotImplementedException();
         public override Complexity BestComplexity => throw new NotImplementedException();
         public override Complexity AverageComplexity => throw new NotImplementedException();
@@ -17,9 +16,10 @@ namespace Algorithmic.Array.Sort
         public override bool isSerial => true;
         public override bool isAdaptive => false;
 
-        private string GetDescription()
+        private protected override string GetDescription()
         {
-            return "Sort array by finding the minimal element in the unsorted part of the array and swapping with the minimal unsorted index." +
+            return
+                "Sort array by finding the minimal element in the unsorted part of the array and swapping with the minimal unsorted index. " +
                 "Complete this process until the entire array is sorted.";
         }
 

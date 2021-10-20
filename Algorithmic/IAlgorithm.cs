@@ -1,6 +1,6 @@
 ﻿namespace Algorithmic
 {
-    public interface IDescriptive
+    public interface IAlgorithm
     {
         public AlgorithmType AlgorithmType { get; }
         public string Name { get; }

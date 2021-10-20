@@ -8,7 +8,7 @@ namespace Algorithmic.Array.Sort
     {
         public AlgorithmType AlgorithmType => AlgorithmType.Sorting;
         public abstract string Name { get; }
-        public abstract string Description { get; }
+        public string Description => GetDescription();
         public abstract Complexity MemoryUsage { get; }
         public abstract Complexity BestComplexity { get; }
         public abstract Complexity AverageComplexity { get; }
@@ -49,6 +49,7 @@ namespace Algorithmic.Array.Sort
             SortAlgorithm(collection, comparison);
         }
 
+        private protected abstract string GetDescription();
         private protected abstract void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison);
     }
 }
