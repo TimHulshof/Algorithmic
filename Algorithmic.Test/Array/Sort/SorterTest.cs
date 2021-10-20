@@ -15,6 +15,8 @@ namespace Algorithmic.Array.Sort
             {
                 yield return new object[] { new BubbleSort() };
                 yield return new object[] { new SelectionSort() };
+                yield return new object[] { new LomutoQuickSort() };
+                yield return new object[] { new HoareQuickSort() };
             }
         }
 
@@ -56,12 +58,13 @@ namespace Algorithmic.Array.Sort
         [DynamicData(nameof(Sorters), DynamicDataSourceType.Property)]
         public void ShouldSortValuesWhenTImplimentsIComparable(ISorter sorter)
         {
-            foreach (var testArray in GetTestArrays())
+            var testArrays = GetTestArrays();
+            for (int i = 0; i < testArrays.Count; i++)
             {
-                sorter.Sort(testArray);
-                for (int i = 1; i < testArray.Length; i++)
+                sorter.Sort(testArrays[i]);
+                for (int j = 1; j < testArrays[i].Length; j++)
                 {
-                    Assert.IsTrue(testArray[i] >= (testArray[i - 1]));
+                    Assert.IsTrue(testArrays[i][j] >= (testArrays[i][j - 1]), $"Failed on testArray[{i}]");
                 }
             }
         }
@@ -70,12 +73,13 @@ namespace Algorithmic.Array.Sort
         [DynamicData(nameof(Sorters), DynamicDataSourceType.Property)]
         public void ShouldSortValuesWhenIComparerTPassedAsArgument(ISorter sorter)
         {
-            foreach (var testArray in GetTestArrays())
+            var testArrays = GetTestArrays();
+            for (int i = 0; i < testArrays.Count; i++)
             {
-                sorter.Sort(testArray, new ReverseIntComparer());
-                for (int i = 1; i < testArray.Length; i++)
+                sorter.Sort(testArrays[i], new ReverseIntComparer());
+                for (int j = 1; j < testArrays[i].Length; j++)
                 {
-                    Assert.IsTrue(testArray[i] <= (testArray[i - 1]));
+                    Assert.IsTrue(testArrays[i][j] <= (testArrays[i][j - 1]), $"Failed on testArray[{i}]");
                 }
             }
         }
@@ -84,64 +88,67 @@ namespace Algorithmic.Array.Sort
         [DynamicData(nameof(Sorters), DynamicDataSourceType.Property)]
         public void ShouldSortValuesWhenComparisonTPassedAsArgument(ISorter sorter)
         {
-            foreach (var testArray in GetTestArrays())
+            Comparison<int> comparison = (p, c) =>
             {
-                Comparison<int> comparison = (p, c) =>
+                if (p > c)
                 {
-                    if (p > c)
-                    {
-                        return -1;
-                    }
-                    if (p < c)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                };
-
-                sorter.Sort(testArray, comparison);
-
-                for (int i = 1; i < testArray.Length; i++)
+                    return -1;
+                }
+                if (p < c)
                 {
-                    Assert.IsTrue(testArray[i] <= (testArray[i - 1]));
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            };
+
+            var testArrays = GetTestArrays();
+            for (int i = 0; i < testArrays.Count; i++)
+            {
+                sorter.Sort(testArrays[i], comparison);
+                for (int j = 1; j < testArrays[i].Length; j++)
+                {
+                    Assert.IsTrue(testArrays[i][j] <= (testArrays[i][j - 1]), $"Failed on testArray[{i}]");
                 }
             }
         }
 
         #endregion
 
-        private IEnumerable<int[]> GetTestArrays()
+        private List<int[]> GetTestArrays()
         {
-            yield return new int[] { 0, 0 };
-            yield return new int[] { 0, 0, 0 };
-            yield return new int[] { 0, 1 };
-            yield return new int[] { 1, 0 };
-            yield return new int[] { 0, 1, 2 };
-            yield return new int[] { 0, 2, 1 };
-            yield return new int[] { 1, 0, 2 };
-            yield return new int[] { 1, 2, 0 };
-            yield return new int[] { 2, 1, 0 };
-            yield return new int[] { 2, 0, 1 };
-            yield return new int[] { 0, 1, 1 };
-            yield return new int[] { 1, 0, 1 };
-            yield return new int[] { 1, 1, 0 };
-            yield return new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            yield return new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            yield return new int[] { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 };
-            yield return new int[] { 12, 6, 3, 13, 65, 1, 78, 1, 31, 21, -1, -5, 213, -7134, 134 };
-            yield return GetRandomIntArray(100, int.MaxValue);
-            yield return GetRandomIntArray(100, int.MaxValue - 1);
-            yield return GetRandomIntArray(100, int.MinValue);
-            yield return GetRandomIntArray(100, int.MinValue + 1);
-            yield return GetRandomIntArray(100);
-            yield return GetRandomIntArray(100);
-            yield return GetRandomIntArray(100);
-            yield return GetRandomIntArray(100);
-            yield return GetRandomIntArray(100);
-            yield return GetRandomIntArray(100);
+            return new List<int[]>()
+            {
+                new int[] { 0, 0 },
+                new int[] { 0, 0, 0 },
+                new int[] { 0, 1 },
+                new int[] { 1, 0 },
+                new int[] { 0, 1, 2 },
+                new int[] { 0, 2, 1 },
+                new int[] { 1, 0, 2 },
+                new int[] { 1, 2, 0 },
+                new int[] { 2, 1, 0 },
+                new int[] { 2, 0, 1 },
+                new int[] { 0, 1, 1 },
+                new int[] { 1, 0, 1 },
+                new int[] { 1, 1, 0 },
+                new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
+                new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 },
+                new int[] { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 },
+                new int[] { 12, 6, 3, 13, 65, 1, 78, 1, 31, 21, -1, -5, 213, -7134, 134 },
+                GetRandomIntArray(100, int.MaxValue),
+                GetRandomIntArray(100, int.MaxValue - 1),
+                GetRandomIntArray(100, int.MinValue),
+                GetRandomIntArray(100, int.MinValue + 1),
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
+            };
         }
 
         private int[] GetRandomIntArray(int size, int? injectedValue = null)
