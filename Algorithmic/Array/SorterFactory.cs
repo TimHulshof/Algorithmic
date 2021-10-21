@@ -1,7 +1,7 @@
 ﻿using Algorithmic.Array.Sort;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Algorithmic.Array
 {
@@ -20,7 +20,7 @@ namespace Algorithmic.Array
 
         public IEnumerable<ISorter> GetAllSorters()
         {
-            return _sorters;       
+            return _sorters;
         }
     }
 }

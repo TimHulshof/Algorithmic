@@ -40,7 +40,7 @@ namespace Algorithmic.Array.Sort
         private int Partition<T>(IList<T> collection, int lowIndex, int highIndex, Comparison<T> comparison)
         {
             var comparableElement = collection[(lowIndex + highIndex) / 2];
-            
+
             lowIndex--;
             highIndex++;
 
