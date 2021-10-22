@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Algorithmic.Array.Sort
+namespace Algorithmic.Sorting
 {
-    internal class LomutoQuickSort : Sorter
+    internal class HoareQuickSort : Sorter
     {
-        public override string Name => "Quick Sort - Lomuto Partition Scheme";
+        public override string Name => "Quick Sort - Hoare Partition Scheme";
         public override Complexity MemoryUsage => throw new NotImplementedException();
         public override Complexity BestComplexity => throw new NotImplementedException();
         public override Complexity AverageComplexity => throw new NotImplementedException();
@@ -18,9 +18,7 @@ namespace Algorithmic.Array.Sort
 
         private protected override string GetDescription()
         {
-            return
-                "Quicksort scheme developed by Nico Lomuto. Chose the last element as a pivot value to partition the array arount this value. " +
-                "Recursevly partition these sub-arrays until the whole array is sorted.";
+            throw new NotImplementedException();
         }
 
         private protected override void SortAlgorithm<T>(IList<T> collection, Comparison<T> comparison)
@@ -34,29 +32,42 @@ namespace Algorithmic.Array.Sort
             {
                 var pivot = Partition(collection, lowIndex, highIndex, comparison);
 
-                RecursiveSort(collection, lowIndex, pivot - 1, comparison);
+                RecursiveSort(collection, lowIndex, pivot, comparison);
                 RecursiveSort(collection, pivot + 1, highIndex, comparison);
             }
         }
 
         private int Partition<T>(IList<T> collection, int lowIndex, int highIndex, Comparison<T> comparison)
         {
-            var comparableElement = collection[highIndex];
-            var pivotIndex = lowIndex - 1;
+            var comparableElement = collection[(lowIndex + highIndex) / 2];
 
-            for (int i = lowIndex; i <= highIndex; i++)
+            lowIndex--;
+            highIndex++;
+
+            while (true)
             {
-                if (comparison.Invoke(collection[i], comparableElement) <= 0)
+                // Shift swapping indicies to first values needing to be swapped.
+                do
                 {
-                    // Move pivotIndex++ and swap elements at pivotIndex and i.
-                    pivotIndex++;
-                    var temp = collection[pivotIndex];
-                    collection[pivotIndex] = collection[i];
-                    collection[i] = temp;
-                }
-            }
+                    lowIndex++;
+                } while (comparison.Invoke(collection[lowIndex], comparableElement) < 0);
 
-            return pivotIndex;
+                do
+                {
+                    highIndex--;
+                } while (comparison.Invoke(collection[highIndex], comparableElement) > 0);
+
+                // Condition determining sub-array is fully partitioned.
+                if (lowIndex >= highIndex)
+                {
+                    return highIndex;
+                }
+
+                // Swap elements every loop.
+                var temp = collection[lowIndex];
+                collection[lowIndex] = collection[highIndex];
+                collection[highIndex] = temp;
+            }
         }
     }
 }

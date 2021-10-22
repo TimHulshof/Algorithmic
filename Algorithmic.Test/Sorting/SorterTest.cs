@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algorithmic.Array.Sort
+namespace Algorithmic.Sorting
 {
     [TestClass]
     public class SorterTest
@@ -172,7 +172,7 @@ namespace Algorithmic.Array.Sort
         private string GetIntArrayAsString(int[] array)
         {
             var stringBuilder = new StringBuilder();
-            foreach(var element in array)
+            foreach (var element in array)
             {
                 stringBuilder.Append(element.ToString() + " ");
             }

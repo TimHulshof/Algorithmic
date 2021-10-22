@@ -1,9 +1,8 @@
-﻿using Algorithmic.Array.Sort;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Algorithmic.Array
+namespace Algorithmic.Sorting
 {
     public class SorterFactory
     {

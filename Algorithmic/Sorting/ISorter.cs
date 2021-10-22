@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Algorithmic.Array.Sort
+namespace Algorithmic.Sorting
 {
     public interface ISorter : IAlgorithm, ITimeComplexity, IMemoryComplexity
     {
