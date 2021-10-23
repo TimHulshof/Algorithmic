@@ -15,9 +15,11 @@ namespace Algorithmic.Sorting
             get
             {
                 yield return new object[] { new BubbleSort() };
-                yield return new object[] { new SelectionSort() };
-                yield return new object[] { new LomutoQuickSort() };
+                yield return new object[] { new BinaryHeapSort() };
                 yield return new object[] { new HoareQuickSort() };
+                yield return new object[] { new InsertionSort() };
+                yield return new object[] { new LomutoQuickSort() };
+                yield return new object[] { new SelectionSort() };
             }
         }
 
@@ -122,33 +124,35 @@ namespace Algorithmic.Sorting
         {
             return new List<int[]>()                                                        // Array index.
             {
-                new int[] { 0, 0 },                                                         // 0
-                new int[] { 0, 0, 0 },                                                      // 1
-                new int[] { 0, 1 },                                                         // 2
-                new int[] { 1, 0 },                                                         // 3
-                new int[] { 0, 1, 2 },                                                      // 4
-                new int[] { 0, 2, 1 },                                                      // 5
-                new int[] { 1, 0, 2 },                                                      // 6
-                new int[] { 1, 2, 0 },                                                      // 7
-                new int[] { 2, 1, 0 },                                                      // 8
-                new int[] { 2, 0, 1 },                                                      // 9
-                new int[] { 0, 1, 1 },                                                      // 10
-                new int[] { 1, 0, 1 },                                                      // 11
-                new int[] { 1, 1, 0 },                                                      // 12
-                new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },                                // 13
-                new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 },                                // 14
-                new int[] { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 },                      // 15
-                new int[] { 12, 6, 3, 13, 65, 1, 78, 1, 31, 21, -1, -5, 213, -7134, 134 },  // 16
-                GetRandomIntArray(100, int.MaxValue),                                       // 17
-                GetRandomIntArray(100, int.MaxValue - 1),                                   // 18
-                GetRandomIntArray(100, int.MinValue),                                       // 19
-                GetRandomIntArray(100, int.MinValue + 1),                                   // 20
-                GetRandomIntArray(100),                                                     // 21
-                GetRandomIntArray(100),                                                     // 22
+                new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },                                // 0
+                new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 },                                // 1
+                new int[] { 0, 0 },                                                         // 2
+                new int[] { 0, 0, 0 },                                                      // 3
+                new int[] { 0, 1 },                                                         // 4
+                new int[] { 1, 0 },                                                         // 5
+                new int[] { 0, 1, 2 },                                                      // 6
+                new int[] { 0, 2, 1 },                                                      // 7
+                new int[] { 1, 0, 2 },                                                      // 8
+                new int[] { 1, 2, 0 },                                                      // 9
+                new int[] { 2, 1, 0 },                                                      // 10
+                new int[] { 2, 0, 1 },                                                      // 11
+                new int[] { 0, 1, 1 },                                                      // 12
+                new int[] { 1, 0, 1 },                                                      // 13
+                new int[] { 1, 1, 0 },                                                      // 14
+                new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },                                // 15
+                new int[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 },                                // 16
+                new int[] { -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 },                      // 17
+                new int[] { 12, 6, 3, 13, 65, 1, 78, 1, 31, 21, -1, -5, 213, -7134, 134 },  // 18
+                GetRandomIntArray(100, int.MaxValue),                                       // 19
+                GetRandomIntArray(100, int.MaxValue - 1),                                   // 20
+                GetRandomIntArray(100, int.MinValue),                                       // 21
+                GetRandomIntArray(100, int.MinValue + 1),                                   // 22
                 GetRandomIntArray(100),                                                     // 23
                 GetRandomIntArray(100),                                                     // 24
                 GetRandomIntArray(100),                                                     // 25
                 GetRandomIntArray(100),                                                     // 26
+                GetRandomIntArray(100),
+                GetRandomIntArray(100),
             };
         }
 
